@@ -15,7 +15,8 @@ jobs:
 
       # 2️⃣ Log in to Docker Hub (using plain credentials)
       - name: Log in to Docker Hub
-        run: echo "yourpassword" | docker login -u "krversion" --TYPEhere@0597
+        run: echo "MySecretPass123" | docker login -u "krversion" --password-stdin
+
 
       # 3️⃣ Build Docker image
       - name: Build Docker image
