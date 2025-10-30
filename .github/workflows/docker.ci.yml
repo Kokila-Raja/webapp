@@ -1,4 +1,4 @@
-name: Simple Docker Build
+name: Build, Test, and Push Docker Image
 
 on:
   push:
@@ -9,8 +9,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # 1️⃣ Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2️⃣ Log in to Docker Hub (using plain credentials)
+      - name: Log in to Docker Hub
+        run: echo "yourpassword" | docker login -u "yourusername" --password-stdin
+
+      # 3️⃣ Build Docker image
       - name: Build Docker image
-        run: docker build -t myapp:latest .
+        run: docker build -t yourusername/myapp:latest .
+
+      # 4️⃣ Run tests inside the container
+      - name: Run tests
+        run: docker run --rm yourusername/myapp:latest npm test
+
+      # 5️⃣ Push Docker image to Docker Hub
+      - name: Push Docker image
+        run: docker push yourusername/myapp:latest
