@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 copy package*.json ./
 RUN npm install
 
-COPY ..
+COPY . .
 
 EXPOSE 3000
 
