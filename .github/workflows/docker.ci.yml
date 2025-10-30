@@ -20,12 +20,12 @@ jobs:
 
       # 3️⃣ Build Docker image
       - name: Build Docker image
-        run: docker build -t yourusername/myapp:latest .
+        run: docker build -t krversion/webapp .
 
       # 4️⃣ Run tests inside the container
       - name: Run tests
-        run: docker run --rm yourusername/myapp:latest npm test
+        run: docker run --rm krversion/webapp:latest npm test
 
       # 5️⃣ Push Docker image to Docker Hub
       - name: Push Docker image
-        run: docker push yourusername/myapp:latest
+        run: docker push krversion/webapp:latest
